@@ -1,0 +1,315 @@
+@import url("https://necolas.github.io/normalize.css/8.0.1/normalize.css");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+}
+
+body {
+  background-color: #1c1c1c;
+}
+
+body .contenedor {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+body .contenedor header {
+  position: relative;
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-flow: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #141414;
+  margin-bottom: 30px;
+  padding: 0;
+}
+
+body .contenedor header .nombre {
+  font-family: "Poppins", serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 350%;
+  margin-left: 40px;
+}
+
+body .contenedor footer {
+  margin-top: 50px;
+  display: flex;
+  flex-flow: column;
+  background-color: #141414;
+  width: 100%;
+  height: 5%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+/*estilos pa el contenedor medio */
+body .contenedor .contenedormedio {
+  width: 70%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*para el texto que dice q aÃ±ada una canciÃ³n*/
+body .contenedor .contenedormedio #addSongTxt {
+  color: white;
+  padding: 0px;
+  margin: 0px;
+  font-size: large;
+  top: 230px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  background-color: transparent;
+}
+
+
+body .contenedor .contenedormedio input {
+  padding: 12px;
+  height: 18px;
+  width: 500px;
+  border-radius: 40px;
+  border: none;
+  background-color: white;
+  color: #141414;
+  text-align: justify;
+  margin-bottom: 5px;
+}
+
+body .contenedor .contenedormedio input::placeholder {
+  color: black
+}
+
+/*historial*/
+body .contenedor .contenedormedio #historial {
+  color: white;
+  background-color: gray;
+  text-align: center;
+  padding: 15px;
+  width: 100%;
+  border-radius: 20px;
+  margin-top: 2px;
+  font-weight: bold;
+
+}
+
+
+/*para el boton de agregar */
+body .contenedor .contenedormedio #addSong {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-content: center;
+  margin-bottom: 15px
+}
+
+body .contenedor .contenedormedio #addSong button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+body .contenedor .contenedormedio {
+  width: 70%;
+}
+
+body .contenedor .contenedormedio #listaReproduccion article {
+  display: flex;
+  flex-flow: row;
+  justify-items: center;
+  align-items: center;
+}
+
+body .contenedor .contenedormedio #listaReproduccion article b {
+  background-color: #141414;
+  width: 40vw;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 40px;
+  border: 2px solid white;
+  font-weight: 500;
+}
+
+/*comandos mas especÃ­ficos del botÃ³n +*/
+i {
+  font-size: 40px;
+  margin-left: 10px;
+  transition: .2s all;
+  cursor: pointer;
+}
+
+i:hover {
+  transform: scale(1.4);
+}
+
+.fa-brands {
+  font-size: 20px;
+  margin: 5px;
+  transition: 0.2s all;
+}
+
+.fa-brands:hover {
+  transform: rotate(-20deg) scale(1.4);
+}
+
+.marginBtn {
+  margin: 15px;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width:610px) {
+  body .contenedor header {
+    height: 15%;
+  }
+
+  body .contenedor header .nombre {
+    font-size: 250%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body .contenedor .contenedormedio #addSongTxt {
+    text-align: center;
+  }
+
+  body .contenedor .contenedormedio input {
+    height: 18px;
+    width: 60vw;
+    text-align: justify;
+    margin-bottom: 5px;
+  }
+
+  body .contenedor .contenedormedio input::placeholder {
+    font-size: .7em;
+    text-align: center;
+  }
+
+  body .contenedor footer {
+    font-size: 0.8em;
+    text-align: center;
+  }
+}
+
+@media (min-width:471px) and (max-width:1023px) {
+
+  body .contenedor header .nombre {
+    text-align: center;
+    font-style: italic;
+    font-size: 300%;
+    margin: 0;
+
+  }
+}
+
+@media (min-width:1500px) {
+  span {
+    font-size: 2.2em;
+  }
+
+  i {
+    font-size: 4em;
+  }
+
+  b {
+    font-size: 4em;
+  }
+
+  body .contenedor .contenedormedio #addSongTxt {
+    font-size:3.5em;
+  }
+
+  body .contenedor header .nombre {
+    text-align: center;
+    font-style: italic;
+    font-size: 6em;
+    margin: 0;
+
+  }
+
+  body .contenedor .contenedormedio input {
+    width: 40vw;
+    height:80px;
+    border-radius: 55px;
+
+  }
+
+  body .contenedor .contenedormedio input::placeholder {
+    font-size: 3em;
+  }
+
+  .fa-brands {
+    font-size: 2.5em;
+  }
+
+  body .contenedor .contenedormedio #historial {
+    font-size: 4.3em;
+
+  }
+
+
+}
+@media (min-width:1000px) and (min-height:1300px){
+  span {
+    font-size: 2.5em;
+    text-align: center;
+  }
+
+  i {
+    font-size: 4em;
+  }
+
+  b {
+    font-size: 3em;
+  }
+
+  body .contenedor .contenedormedio #addSongTxt {
+    font-size:3.5em;
+    text-align: center;
+  }
+
+  body .contenedor header .nombre {
+    text-align: center;
+    font-style: italic;
+    font-size: 7em;
+    margin: 0;
+
+  }
+
+  body .contenedor .contenedormedio input {
+    width: 70vw;
+    height:80px;
+    border-radius: 55px;
+
+  }
+
+  body .contenedor .contenedormedio input::placeholder {
+    font-size: 2.2em;
+  }
+
+  .fa-brands {
+    font-size: 2.5em;
+  }
+
+  body .contenedor .contenedormedio #historial {
+    font-size: 3.5em;
+
+  }
+
+
+}
