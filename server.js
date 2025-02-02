@@ -72,7 +72,44 @@ app.get('/registrarse', (req, res) => {
     res.sendFile(path.join(__dirname, 'fronted', 'registrarse.html'));
 });
   
-
+//CRUD
+//Crear nuevo usuario,  CREATED
+app.post('/registrarse', validacionRegistro, async(req, res)=>{
+    const usuario = req.body.usuario;
+    const email = req.body.email;
+    const pass = req.body.pass;
+  
+    console.log('Usuario:', usuario);
+    console.log('Email:', email);
+    console.log('Contraseña:', pass);
+  
+    let passwordHash = await bcryptjs.hash(pass, 8);
+    connection.query('INSERT INTO usuarios (nombre, correo, password) VALUES (?,?,?)', [usuario, email, passwordHash], async(error, results)=>{
+        if(error){
+          console.log(error);
+          res.render('sesion', {
+            alert: true,
+            alertTitle: "Error",
+            alertMessage: "Email repetido, favor de intentar de nuevo",
+            alertIcon: "warning",
+            showConfirmButton: true,
+            timer: 1500,
+            ruta: "registrarse"
+          })
+        }else{
+          res.render('registrarse',{
+            alert: true,
+            alertTitle: "Registro",
+            alertMessage: "¡Registro exitoso!",
+            alertIcon: "success",
+            showConfirmButton: false,
+            timer: 1500,
+            ruta: ''
+          })
+        }  
+      })
+  });
+  
 
 
 app.listen(3000,()=>{
