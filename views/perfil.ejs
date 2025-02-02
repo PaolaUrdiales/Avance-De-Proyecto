@@ -15,6 +15,21 @@
             <span class="nombre">Rhymes Music</span>
         </header>
 
+        <div class="perfilLateral">
+            <div class="perfilBtn"></div>
+            <button id="btnPerfil" class="botonPerfil">Perfil</button>
+            <button id="btnAjustes" class="botonPerfil">Ajustes</button>
+            <button id="btnCerrar" class="botonPerfil" >Cerrar sesión</button>
+        </div>
+        
+        <!-- Apartado de Perfil  -->
+        <div class="infoPerfil" id="infoPerfil">
+            <p><strong>Nombre</strong><br><%= nombre || 'No disponible' %></p>
+            <p><strong>Email</strong><br><%= email || 'No disponible' %></p>
+
+            <button id="btnEliminar" class="botonPerfil"">Eliminar Cuenta</button>
+        </div>
+
         <footer>
             <div class="redessociales">
                 <a href="https://www.facebook.com"><i class="fa-brands fa-facebook-f"></i></a>
