@@ -37,8 +37,28 @@ connection.connect((err) => {
 
 //HTML "sesion" como principal
 app.get('/', (req, res)=>{
-    res.sendFile(path.join(__dirname, 'fronted', 'pagPrincipal.html'))
+    res.sendFile(path.join(__dirname, 'fronted', 'sesion.html'))
 })
+
+//Leer HTML "Pagina principal"
+app.get('/pagPrincipal', (req, res) => {
+    if (req.session.loggedin) {
+      res.sendFile(path.join(__dirname, 'fronted', 'pagPrincipal.html'));
+    } else {
+      res.redirect('/');
+    }
+});
+  
+//Leer HTML "Lista de canciones"
+app.get('/listaCanciones', (req, res) => {
+    res.sendFile(path.join(__dirname, 'fronted', 'listaCanciones.html'));
+});
+  
+//Leer HTML "Registrarse"
+app.get('/registrarse', (req, res) => {
+    res.sendFile(path.join(__dirname, 'fronted', 'registrarse.html'));
+});
+  
 
 app.listen(3000,()=>{
     console.log('Server funciona en http://localHost:3000')
