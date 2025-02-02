@@ -14,20 +14,40 @@
             <div class="fondonegro"></div>
             <span class="nombre">Rhymes Music</span>
         </header>
-
-        <div class="perfilLateral">
-            <div class="perfilBtn"></div>
-            <button id="btnPerfil" class="botonPerfil">Perfil</button>
-            <button id="btnAjustes" class="botonPerfil">Ajustes</button>
-            <button id="btnCerrar" class="botonPerfil" >Cerrar sesión</button>
-        </div>
         
-        <!-- Apartado de Perfil  -->
-        <div class="infoPerfil" id="infoPerfil">
-            <p><strong>Nombre</strong><br><%= nombre || 'No disponible' %></p>
-            <p><strong>Email</strong><br><%= email || 'No disponible' %></p>
+        <div class="perfilCuadro">
+            <div class="perfilLateral">
+                <div class="perfilBtn"></div>
+                <button id="btnPerfil" class="botonPerfil">Perfil</button>
+                <button id="btnAjustes" class="botonPerfil">Ajustes</button>
+                <button id="btnCerrar" class="botonPerfil" >Cerrar sesión</button>
+            </div>
+            
+            <!-- Apartado de Perfil  -->
+            <div class="infoPerfil" id="infoPerfil">
+                <p><strong>Nombre</strong><br><%= nombre || 'No disponible' %></p>
+                <p><strong>Email</strong><br><%= email || 'No disponible' %></p>
 
-            <button id="btnEliminar" class="botonPerfil"">Eliminar Cuenta</button>
+                <button id="btnEliminar" class="botonPerfil"">Eliminar Cuenta</button>
+            </div>
+
+            <!-- Apartado de Ajustes -->
+            <div class="actuInfo" id="actuInfo">
+                <form action="/actualizarPerfil?_method=PATCH" method="POST" id="updateForm">
+                    <input type="hidden" name="_method" value="PATCH"> <!-- Simula el método PATCH -->
+                    
+                    <label for="newName">Nuevo Nombre:</label>
+                    <input type="text" id="newName" name="newName" value="<%= nombre %>" required>
+
+                    <label for="newEmail">Nueva Email:</label>
+                    <input type="email" id="newEmail" name="newEmail">
+            
+                    <label for="newPassword">Nueva Contraseña:</label>
+                    <input type="password" id="newPassword" name="newPassword">
+            
+                    <button type="submit" id="btnActu">Actualizar</button>
+                </form>
+            </div>
         </div>
 
         <footer>
