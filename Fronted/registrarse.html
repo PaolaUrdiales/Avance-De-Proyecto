@@ -15,6 +15,19 @@
             <span class="nombre">Rhymes Music</span>
         </header>
 
+        <div class = registroForm>
+            <h1 id="registroTitulo">Crear un usuario</h1>
+            <form action='/registrarse' method="POST">
+                <label for="usuario">Usuario</label>
+                <input type="text" name="usuario" id="usuario" placeholder="Crea tu usuario" required>
+                <label for="email">Correo</label>
+                <input type="email" name="email" id="email" placeholder="Introduce tu email" required>
+                <label for="pass">Contraseña</label>
+                <input type="password" name="pass" id="pass" placeholder="Introduce tu contraseña" required>
+                <input type="submit" class="registrarBtn" value="Crear usuario">
+            </form>
+        </div>
+
         <footer>
             <div class="redessociales">
                 <a href="https://www.facebook.com"><i class="fa-brands fa-facebook-f"></i></a>
