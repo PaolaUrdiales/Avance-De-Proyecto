@@ -44,7 +44,7 @@ app.get('/', (req, res)=>{
     res.sendFile(path.join(__dirname, 'fronted', 'sesion.html'))
 })
 
-//Leer HTML "Pagina principal"
+//HTML "Pagina principal"
 app.get('/pagPrincipal', (req, res) => {
     if (req.session.loggedin) {
       res.sendFile(path.join(__dirname, 'fronted', 'pagPrincipal.html'));
@@ -53,12 +53,12 @@ app.get('/pagPrincipal', (req, res) => {
     }
 });
   
-//Leer HTML "Lista de canciones"
+//HTML "Lista de canciones"
 app.get('/listaCanciones', (req, res) => {
     res.sendFile(path.join(__dirname, 'fronted', 'listaCanciones.html'));
 });
   
-//Leer HTML "Registrarse"
+//HTML "Registrarse"
 app.get('/registrarse', (req, res) => {
     res.sendFile(path.join(__dirname, 'fronted', 'registrarse.html'));
 });
