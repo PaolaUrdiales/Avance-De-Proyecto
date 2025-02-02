@@ -41,6 +41,20 @@
     <script src="https://kit.fontawesome.com/9551891e69.js" crossorigin="anonymous"></script>
     <script src="/app.js"></script>
 
+    <script>
+        if (alertData) {
+            Swal.fire({
+                title: alertData.alertTitle,
+                text: alertData.alertMessage,
+                icon: alertData.alertIcon,
+                showConfirmButton: alertData.showConfirmButton,
+                timer: alertData.timer
+            }).then(() => {
+                //Mandar despues que termina el mensaje de mostrarse
+                window.location.href = `/${alertData.ruta}`;
+            });
+        }
+    </script>
 </body>
 
 </html>
