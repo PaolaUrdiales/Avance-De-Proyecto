@@ -200,3 +200,20 @@ function editarCancion(index) {
     gestor.render();
   }
 }
+
+//Para pedir datos del perfil  y mostrarlos en /perfil
+fetch('/perfil')
+.then(response => response.json())
+.then(data => {
+  if (data.nombre && data.email) {
+    document.getElementById("username").textContent = data.nombre;
+    document.getElementById("userEmail").textContent = data.email;
+  } else {
+    window.location.href = "/"; //Si no tenemos datos, regresa a sesion
+  }
+})
+.catch(error => {
+  console.error("Error al obtener los datos:", error);
+  window.location.href = "/"; //Si hay error, vuelve a inicio
+});
+

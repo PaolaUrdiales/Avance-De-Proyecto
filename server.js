@@ -13,6 +13,11 @@ const methodOverride = require('method-override'); // Para manejar el método PA
 const app = express(); //Iniciar app
 
 //Middleware
+app.use(express.json());
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'fronted')));
+app.use('/js', express.static(path.join(__dirname, 'fronted', 'js')));
 app.use(express.static(path.join(__dirname, 'fronted')));
 app.use('/js', express.static(path.join(__dirname, 'fronted', 'js')));
 
@@ -39,6 +44,12 @@ connection.connect((err) => {
     console.log('Conexión exitosa a la base de datos.');
 });
 
+app.use(cors({
+    origin: '*',
+    methods: ['GET','POST','PATCH','DELETE'],
+    allowedHeaders: ['Content-Type','Authorization']
+}));
+
 //HTML "sesion" como principal
 app.get('/', (req, res)=>{
     res.sendFile(path.join(__dirname, 'fronted', 'sesion.html'))
@@ -63,6 +74,8 @@ app.get('/registrarse', (req, res) => {
     res.sendFile(path.join(__dirname, 'fronted', 'registrarse.html'));
 });
   
+
+
 
 app.listen(3000,()=>{
     console.log('Server funciona en http://localHost:3000')
