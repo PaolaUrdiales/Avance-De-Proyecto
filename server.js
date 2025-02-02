@@ -107,8 +107,8 @@ app.post('/registrarse', validacionRegistro, async(req, res)=>{
             ruta: ''
           })
         }  
-      })
-  });
+    })
+});
   
 
 
