@@ -16,6 +16,10 @@ const app = express(); //Iniciar app
 app.use(express.static(path.join(__dirname, 'fronted')));
 app.use('/js', express.static(path.join(__dirname, 'fronted', 'js')));
 
+//Motor de plantillas
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
 //Conexión a MySQL con variables de entorno
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
