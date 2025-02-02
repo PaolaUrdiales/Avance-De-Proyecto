@@ -201,6 +201,35 @@ function editarCancion(index) {
   }
 }
 
+//Boton para actualizar los datos del usuario 
+document.getElementById("updateForm").addEventListener("submit", async (e) => {
+  e.preventDefault(); //Evita el envío del formulario
+
+  const newName = document.getElementById("newName").value;
+  const newPassword = document.getElementById("newPassword").value;
+  const newEmail = document.getElementById("newEmail").value;
+
+  const response = await fetch('/actualizarPerfil', {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ newName, newPassword, newEmail }),
+  });
+  const data = await response.json();
+
+  if (data.success) {
+    alert(data.message); //Mensaje de que todo salio correcto
+    //Actualizados los datos de nombre y email
+    document.getElementById("username").textContent = data.nombre;
+    document.getElementById("userEmail").textContent = data.email;
+    //Redirige a perfil con los datos actualizados
+    window.location.href = 'perfil';
+  } else {
+    alert(data.message); //Mensaje de error
+  }
+});
+
 //Para pedir datos del perfil  y mostrarlos en /perfil
 fetch('/perfil')
 .then(response => response.json())

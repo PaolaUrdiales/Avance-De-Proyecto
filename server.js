@@ -18,8 +18,6 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'fronted')));
 app.use('/js', express.static(path.join(__dirname, 'fronted', 'js')));
-app.use(express.static(path.join(__dirname, 'fronted')));
-app.use('/js', express.static(path.join(__dirname, 'fronted', 'js')));
 
 //Motor de plantillas
 app.set('view engine', 'ejs');
