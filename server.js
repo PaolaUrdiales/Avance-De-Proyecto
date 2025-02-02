@@ -12,6 +12,10 @@ const methodOverride = require('method-override'); // Para manejar el método PA
 
 const app = express(); //Iniciar app
 
+//Middleware
+app.use(express.static(path.join(__dirname, 'fronted')));
+app.use('/js', express.static(path.join(__dirname, 'fronted', 'js')));
+
 //Conexión a MySQL con variables de entorno
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -30,6 +34,11 @@ connection.connect((err) => {
     }
     console.log('Conexión exitosa a la base de datos.');
 });
+
+//HTML "sesion" como principal
+app.get('/', (req, res)=>{
+    res.sendFile(path.join(__dirname, 'fronted', 'pagPrincipal.html'))
+})
 
 app.listen(3000,()=>{
     console.log('Server funciona en http://localHost:3000')
