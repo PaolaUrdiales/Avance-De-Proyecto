@@ -110,3 +110,41 @@ function editarCancion(index) {
     gestor.render();
   }
 }
+
+//Para cuando se haga click en alguno de los botones que se encuentran el perfil.ejs
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Documento cargado');  //Verifica que este el documento cargado
+    
+    // Verifica si los botones existen
+    const btnPerfil = document.getElementById('btnPerfil');
+    const btnAjustes = document.getElementById('btnAjustes');
+    const btnCerrar = document.getElementById('btnCerrar');
+    const infoPerfil = document.getElementById('infoPerfil');
+    const actuInfo = document.getElementById('actuInfo');
+  
+    console.log(btnPerfil, btnAjustes, btnCerrar, infoPerfil, actuInfo); //Verifica que esten
+    
+    //Marca en consola que no se encontraron
+    if (!btnPerfil || !btnAjustes || !btnCerrar || !infoPerfil || !actuInfo) {
+      console.error('Uno o más elementos no se encontraron en el DOM.');
+      return;
+    }
+  
+    //Funcionalidad de botones, incluyendo un mensaje para que se muestre en la 
+    //consola que esten siendo usados
+    btnPerfil.addEventListener('click', () => {
+      console.log('Botón "Perfil" clickeado');
+      infoPerfil.style.display = 'block';
+      actuInfo.style.display = 'none';
+    });
+  
+    btnAjustes.addEventListener('click', () => {
+      console.log('Botón "Ajustes" clickeado');
+      actuInfo.style.display = 'block';
+      infoPerfil.style.display = 'none';
+    });
+  
+    btnCerrar.addEventListener('click', () => {
+      window.location.href = '/';
+    });
+  });

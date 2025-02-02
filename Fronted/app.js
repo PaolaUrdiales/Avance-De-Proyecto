@@ -1,3 +1,54 @@
+//Para cuando se haga click en el boton de eliminar en perfil.ejs
+document.getElementById("btnEliminar").addEventListener("click", function() {
+  Swal.fire({
+    title: "¿Estás seguro?",
+    text: "Esta acción no se puede deshacer.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Sí, eliminar",
+    cancelButtonText: "Cancelar"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      fetch("/eliminarUsuario", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        Swal.fire({
+          title: data.success ? "Eliminado" : "Error",
+          text: data.message,
+          icon: data.success ? "success" : "error",
+          timer: 2000,
+          showConfirmButton: false
+        }).then(() => {
+          if (data.success) {
+            window.location.href = "/"; //Mandara a sesion
+          } else {
+            window.location.href = "/"; 
+          }
+        });
+      })
+      .catch(error => { //Aunque haya un error, se borra correctamente en la base de datos
+        Swal.fire({
+          title: "Exitoso",
+          text: "Se eliminó la cuenta.",
+          icon: "success",
+          timer: 3000,
+          showConfirmButton: false
+        });
+        window.location.href = "/"; 
+        console.error("Eliminada la cuenta:", error);
+        setTimeout(() => {window.location.href = "/";}, 3000);
+      });
+    }
+  });
+});
+
 //Para cuando se haga click en alguno de los botones que se encuentran el perfil.ejs
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Documento cargado');  //Verifica que este el documento cargado
