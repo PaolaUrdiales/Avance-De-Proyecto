@@ -92,31 +92,55 @@ app.post('/registrarse', async(req, res)=>{
     console.log('Email:', email);
     console.log('Contraseña:', pass);
   
-    let passwordHash = await bcryptjs.hash(pass, 8);
-    connection.query('INSERT INTO usuarios (nombre, correo, password) VALUES (?,?,?)', [usuario, email, passwordHash], async(error, results)=>{
-        if(error){
-          console.log(error);
-          res.render('sesion', {
-            alert: true,
-            alertTitle: "Error",
-            alertMessage: "Email repetido, favor de intentar de nuevo",
-            alertIcon: "warning",
-            showConfirmButton: true,
-            timer: 1500,
-            ruta: "registrarse"
-          })
-        }else{
-          res.render('registrarse',{
-            alert: true,
-            alertTitle: "Registro",
-            alertMessage: "¡Registro exitoso!",
-            alertIcon: "success",
-            showConfirmButton: false,
-            timer: 1500,
-            ruta: ''
-          })
-        }  
-    })
+    try{
+      let passwordHash = await bcryptjs.hash(pass, 8);
+      connection.query('INSERT INTO usuarios (nombre, correo, password) VALUES (?,?,?)', [usuario, email, passwordHash],(error, results) => {
+              if (error) {
+                  console.log(error);
+                  let alertMessage = "Ocurrió un error, favor de intentar de nuevo";
+                  //Verifica que el error es por entrada de datos duplicados
+                  if (error.code === 'ER_DUP_ENTRY') {
+                      //Revisamos en el mensaje del error qué campo está duplicado
+                      if (error.sqlMessage.includes("nombre")) {
+                          alertMessage = "El nombre de usuario ya existe, intenta con otro.";
+                      } else if (error.sqlMessage.includes("correo")) {
+                          alertMessage = "El correo ya está registrado, favor de intentar con otro.";
+                      }
+                  }
+                  return res.render('sesion', {
+                      alert: true,
+                      alertTitle: "Error",
+                      alertMessage: alertMessage,
+                      alertIcon: "warning",
+                      showConfirmButton: true,
+                      timer: 1500,
+                      ruta: "registrarse"
+                  });
+              } else {
+                  return res.render('registrarse', {
+                      alert: true,
+                      alertTitle: "Registro",
+                      alertMessage: "¡Registro exitoso!",
+                      alertIcon: "success",
+                      showConfirmButton: false,
+                      timer: 1500,
+                      ruta: ''
+                  });
+              }
+          }
+      );
+  }catch(err){
+      console.error("Error al encriptar la contraseña:", err);
+      return res.render('sesion', {
+          alert: true,
+          alertTitle: "Error",
+          alertMessage: "Ocurrió un error en el servidor, por favor intente de nuevo.",
+          alertIcon: "error",
+          showConfirmButton: true,
+          timer: 1500,
+          ruta: "registrarse"
+      });
+  }
 });
   
 //Inicio de sesión de usuario, donde recibimos información del usuario 
