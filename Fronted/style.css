@@ -1,0 +1,841 @@
+@import url("https://necolas.github.io/normalize.css/8.0.1/normalize.css");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+}
+
+body {
+  background-color: #1c1c1c;
+  height: 100%;
+  margin: 0;
+}
+
+body .contenedor {
+  position: relative;
+  width: 100vw;
+  height: 102vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+body .contenedor header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5%;
+  display: flex;
+  flex-flow: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #141414;
+  margin-bottom: 10px;
+  padding: 30;
+}
+
+body .contenedor header .nombre {
+  font-family: "Poppins", serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 45px;
+  margin-left: 40px;
+}
+
+body .contenedor footer {
+  margin-top: 50px;
+  display: flex;
+  flex-flow: column;
+  background-color: #141414;
+  width: 100%;
+  height: 5%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  padding: 30px;
+}
+
+#FooterPlaylist{
+  bottom: -15px;
+}
+
+/* DISEÑO DE LA PAGINA PRINCIPAL*/
+/* Diseño de descripcion*/
+.descripcion {
+  padding: 20px;
+  margin: 40px;
+  margin-left: 130px;
+  text-align: justify;
+  font-size: 15px;
+  background-color: #141414;
+  border: 2px solid white;
+}
+
+/* Diseño de seccion de proyectos*/
+.proyectos {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 85px;
+}
+
+.proyectos span {
+  margin: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.proyecto {
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 2px solid white;
+  background-color: #141414;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.proyecto span {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.proyecto p {
+  text-align: justify;
+  font-size: 13px;
+}
+
+.proyecto img {
+  width: 40%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+/* Diseño de seccion de artistas*/
+.artistas {
+  margin-top: 10px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 85px;
+}
+
+.artistas span {
+  margin: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.artista {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #141414;
+  border: 2px solid white;
+  margin-bottom: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+.artista:hover {
+  background-color: white;
+  border: 2px solid #1c1c1c;
+}
+
+.artista:hover .dataArtista span,
+.artista:hover .dataArtista p {
+  color: black;
+}
+
+.dataArtista {
+  margin: 10px 0;
+}
+
+.dataArtista span {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.dataArtista p {
+  text-align: justify;
+  font-size: 13px;
+}
+
+
+/* DISEÑO DE PAGINA DE LISTA DE CANCIONES*/
+/* Estilos para el contenedor medio */
+body .contenedor .contenedormedio {
+  width: 70%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Para el texto que dice que añada una canción*/
+body .contenedor .contenedormedio #addSongTxt {
+  color: white;
+  padding: 0px;
+  margin: 0px;
+  font-size: large;
+  top: 230px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  background-color: transparent;
+}
+
+body .contenedor .contenedormedio input {
+  padding: 12px;
+  height: 18px;
+  width: 500px;
+  border-radius: 40px;
+  border: none;
+  background-color: white;
+  color: #141414;
+  text-align: justify;
+  margin-bottom: 5px;
+}
+
+body .contenedor .contenedormedio input::placeholder {
+  color: black
+}
+
+/* Historial de canciones*/
+body .contenedor .contenedormedio #historial {
+  color: white;
+  background-color: gray;
+  text-align: center;
+  padding: 15px;
+  width: 100%;
+  border-radius: 20px;
+  margin-top: 2px;
+  font-weight: bold;
+
+}
+
+/*Para el boton de agregar */
+body .contenedor .contenedormedio #addSong {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-content: center;
+  margin-bottom: 15px
+}
+
+body .contenedor .contenedormedio #addSong button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+body .contenedor .contenedormedio {
+  width: 70%;
+}
+
+body .contenedor .contenedormedio #listaReproduccion article {
+  display: flex;
+  flex-flow: row;
+  justify-items: center;
+  align-items: center;
+}
+
+body .contenedor .contenedormedio #listaReproduccion article b {
+  background-color: #141414;
+  width: 40vw;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 40px;
+  border: 2px solid white;
+  font-weight: 500;
+}
+
+/* Comandos mas especificos del boton +*/
+i {
+  font-size: 40px;
+  margin-left: 10px;
+  transition: .2s all;
+  cursor: pointer;
+}
+
+i:hover {
+  transform: scale(1.4);
+}
+
+.fa-brands {
+  font-size: 20px;
+  margin: 5px;
+  transition: 0.2s all;
+}
+
+.fa-brands:hover {
+  transform: rotate(-20deg) scale(1.4);
+}
+
+.marginBtn {
+  margin: 15px;
+}
+
+/* Diseño de barra lateral*/
+#barraLateral {
+  width: 80px; 
+  height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  padding-left: 30px;
+  gap: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+/*Contenedor de cada icono*/
+.menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding-left: 10px;
+  padding-top: 45px;
+}
+
+/*Iconos en círculo*/
+.icono {
+  width: 60px;
+  height: 60px;
+  background-color: #141414;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#iconoDistinto{
+  background-color: #1C1C1C;
+  border: 2px solid #141414;
+}
+
+.icono img {
+  width: 60%;
+  height: auto;
+}
+
+.icono:hover {
+  background: rgba(255, 255, 255, 0.2);
+  animation: rotate360 1s linear infinite;
+}
+
+/*Globo de texto*/
+.globo {
+  position: absolute;
+  left: 100%;
+  background-color: #141414;
+  color: white;
+  padding: 10px 21px;
+  border-radius: 5px;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: bold;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+/* Para mostrar el globo al pasar el cursor */
+.menu:hover .globo {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(10px);
+}
+
+@keyframes rotate360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/*Diseño de iniciar sesion*/
+.loginForm {
+  width: 814px;
+  height: 387px;
+  border-radius: 20px;
+  background-color: #141414;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loginForm .contenedor {
+  width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#titulo {
+  font-size: 35px;
+  padding: 0.27em 0;
+  margin: 0.30em 0;
+}
+
+.loginForm label {
+  font-size: 20px;
+}
+
+.loginForm input[type="text"],
+.loginForm input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #D9D9D9;
+  background-color: #D9D9D9;
+  margin-bottom: 28px;
+  box-sizing: border-box;
+  font-size: 15px;
+  border-radius: 10px;
+  color: #141414;
+}
+
+.loginForm .loginBtn {
+  width: 50%;
+  padding: 12px;
+  background-color: #1E1E1E;
+  color: #ffff;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.loginForm a {
+  width: 25%;
+  padding: 10px;
+  background-color: #575454;
+  color: #ffff;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  text-decoration: none;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.loginForm .loginBtn:hover, .loginBtn:active {
+  color:#141414;
+  background-color: #ffff;
+  border-color: #D9D9D9;
+}
+
+.loginBtn:focus{
+  box-shadow: 0 0 0 3px rgba(230, 230, 230, .9);
+}
+
+.loginForm a:hover, a:active {
+  color:#141414;
+  background-color: #ffff;
+  border-color: #D9D9D9;
+}
+
+.loginForm:focus{
+  box-shadow: 0 0 0 3px rgba(230, 230, 230, .9);
+}
+
+/* Diseño de pagina para registrarse */
+.registroForm {
+  width: 730px;
+  height: 425px;
+  border-radius: 20px;
+  background-color: #141414;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#registroTitulo {
+  font-size: 35px;
+  padding: 0.27em 0;
+  margin: -0.10em 0;
+}
+
+.registroForm form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.registroForm .contenedor {
+  width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.registroForm label {
+  font-size: 20px;
+  color: white;
+  width: 100%;
+  margin-bottom: 5px;
+  padding-left: 385px;
+}
+
+.registroForm input[type="text"],
+.registroForm input[type="email"],
+.registroForm input[type="password"] {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #D9D9D9;
+  background-color: #D9D9D9;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  font-size: 15px;
+  border-radius: 10px;
+  color: #141414;
+}
+
+.registroForm .registrarBtn {
+  width: 50%;
+  padding: 12px;
+  background-color: #1E1E1E;
+  color: #fff;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.registroForm .registrarBtn:hover, .registrarBtn:active {
+  color:#141414;
+  background-color: #fff;
+  border-color: #D9D9D9;
+}
+
+.registrarBtn:focus{
+  box-shadow: 0 0 0 3px rgba(230, 230, 230, .9);
+}
+
+/* Diseño de perfil */
+.perfilCuadro {
+  display: flex;
+  background: #222;
+  padding: 25px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 10px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 60%;
+}
+
+.perfilLateral {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+}
+
+.perfilBtn {
+  width: 95px;
+  height: 95px;
+  background: gray;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.botonPerfil {
+  background: #141414;
+  color: #ffff;
+  border: none;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 30px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.btnPerfil:hover {
+  background: #bbb;
+}
+
+/*Diseño del apartado para mostrar datos*/
+.infoPerfil {
+  background: #141414;
+  padding: 20px;
+  border-radius: 10px;
+  width: 50%;
+  text-align: left;
+}
+
+.infoPerfil p {
+  margin: 25px 0;
+}
+
+/*Diseño del apartado para editar datos*/
+.actuInfo {
+  background: #141414;
+  padding: 20px;
+  border-radius: 10px;
+  width: 50%;
+  text-align: left;
+  display: none;
+}
+
+.actuInfo input, .actuInfo button {
+  margin: 10px 0;
+}
+
+.actuInfo input {
+  width: 92%;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  background: #888;
+  color: white;
+  font-size: 14px;
+}
+
+.actuPerfil input:focus {
+  border-color: #555353;
+}
+
+#btnActu {
+  background-color: #3bb054;
+  padding: 12px 20px;
+  border-radius: 50px;
+  margin-bottom: 1px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+#btnActu:hover {
+  background-color: #2f7f40;
+}
+
+#actuInfo {
+  display: none; /*Para ocultar*/
+}
+
+#infoPerfil {
+  display: block; /*Para mostrar*/
+}
+
+/*Diseño del boton para cerrar sesion*/
+#btnCerrar {
+  background: #dc3545;
+  color: white;
+  padding: 12px;
+  border-radius: 5px;
+  margin-top: 20px;
+  width: 100%;
+  cursor: pointer;
+}
+
+#btnCerrar:hover {
+  background: #bc1b2b;
+}
+
+/*Diseño del boton para eliminar sesion*/
+#btnEliminar {
+  display: block;
+  margin: 50px auto 0 auto;
+  background: #e22f41;
+  color: white;
+  padding: 10px;
+  border-radius: 35px;
+  margin-top: 50px;
+  width: 60%;
+  cursor: pointer;
+}
+
+#btnEliminar:hover {
+  background: #bc2131;
+}
+
+
+/* RESPONSIVE DESIGN */
+@media (max-width:610px) {
+  body .contenedor header {
+    height: 15%;
+  }
+
+  body .contenedor header .nombre {
+    font-size: 250%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body .contenedor .contenedormedio #addSongTxt {
+    text-align: center;
+  }
+
+  body .contenedor .contenedormedio input {
+    height: 18px;
+    width: 60vw;
+    text-align: justify;
+    margin-bottom: 5px;
+  }
+
+  body .contenedor .contenedormedio input::placeholder {
+    font-size: .7em;
+    text-align: center;
+  }
+
+  body .contenedor footer {
+    font-size: 0.8em;
+    text-align: center;
+  }
+}
+
+@media (min-width:471px) and (max-width:1023px) {
+
+  body .contenedor header .nombre {
+    text-align: center;
+    font-style: italic;
+    font-size: 300%;
+    margin: 0;
+
+  }
+}
+
+@media (min-width:1500px) {
+  span {
+    font-size: 2.2em;
+  }
+
+  i {
+    font-size: 4em;
+  }
+
+  b {
+    font-size: 4em;
+  }
+
+  body .contenedor .contenedormedio #addSongTxt {
+    font-size:3.5em;
+  }
+
+  body .contenedor header .nombre {
+    text-align: center;
+    font-style: italic;
+    font-size: 6em;
+    margin: 0;
+
+  }
+
+  body .contenedor .contenedormedio input {
+    width: 40vw;
+    height:80px;
+    border-radius: 55px;
+
+  }
+
+  body .contenedor .contenedormedio input::placeholder {
+    font-size: 3em;
+  }
+
+  .fa-brands {
+    font-size: 2.5em;
+  }
+
+  body .contenedor .contenedormedio #historial {
+    font-size: 4.3em;
+
+  }
+
+
+}
+@media (min-width:1000px) and (min-height:1300px){
+  span {
+    font-size: 2.5em;
+    text-align: center;
+  }
+
+  i {
+    font-size: 4em;
+  }
+
+  b {
+    font-size: 3em;
+  }
+
+  body .contenedor .contenedormedio #addSongTxt {
+    font-size:3.5em;
+    text-align: center;
+  }
+
+  body .contenedor header .nombre {
+    text-align: center;
+    font-style: italic;
+    font-size: 7em;
+    margin: 0;
+
+  }
+
+  body .contenedor .contenedormedio input {
+    width: 70vw;
+    height:80px;
+    border-radius: 55px;
+
+  }
+
+  body .contenedor .contenedormedio input::placeholder {
+    font-size: 2.2em;
+  }
+
+  .fa-brands {
+    font-size: 2.5em;
+  }
+
+  body .contenedor .contenedormedio #historial {
+    font-size: 3.5em;
+
+  }
+
+
+}

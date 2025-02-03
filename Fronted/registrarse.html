@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Rhymes Music - Registro</title>
+</head>
+
+<body>
+    <div class="contenedor">
+        <header id="home">
+            <div class="fondonegro"></div>
+            <span class="nombre">Rhymes Music</span>
+        </header>
+
+        <div class = registroForm>
+            <h1 id="registroTitulo">Crear un usuario</h1>
+            <form action='/registrarse' method="POST">
+                <label for="usuario">Usuario</label>
+                <input type="text" name="usuario" id="usuario" placeholder="Crea tu usuario" required>
+                <label for="email">Correo</label>
+                <input type="email" name="email" id="email" placeholder="Introduce tu email" required>
+                <label for="pass">Contraseña</label>
+                <input type="password" name="pass" id="pass" placeholder="Introduce tu contraseña" required>
+                <input type="submit" class="registrarBtn" value="Crear usuario">
+            </form>
+        </div>
+
+        <footer>
+            <div class="redessociales">
+                <a href="https://www.facebook.com"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.tiktok.com"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.x.com"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.youtube.com"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <span class="copyright">© 2025 Rhymes Music. Todos los derechos reservados.</span>
+        </footer>
+    </div>
+    <script src="https://kit.fontawesome.com/9551891e69.js" crossorigin="anonymous"></script>
+    <script src="/app.js"></script>
+</body>
+
+</html>

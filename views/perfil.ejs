@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Rhymes Music - Perfil</title>
+</head>
+
+<body>
+    <div class="contenedor">
+        <header id="home">
+            <div class="fondonegro"></div>
+            <span class="nombre">Rhymes Music</span>
+        </header>
+
+        <!--Barra lateral-->
+        <div id="barraLateral">
+            <div class="menu">
+                <a href="perfil" class="icono" id="iconoDistinto">
+                    <img src="perfil.png" alt="Perfil"/>    
+                </a>
+                <span class="globo">Perfil</span>
+            </div>
+            <div class="menu">
+                <a href="pagPrincipal.html" class="icono">
+                    <img src="home.png" alt="Home"/>    
+                </a>
+                <span class="globo">Home</span>
+            </div>
+            <div class="menu">
+                <a href="listaCanciones.html" class="icono">
+                    <img src="playlist.png" alt="Playlist"/>    
+                </a>
+                <span class="globo">Playlist</span>
+            </div>
+        </div> 
+
+        <div class="perfilCuadro">
+            <div class="perfilLateral">
+                <div class="perfilBtn"></div>
+                <button id="btnPerfil" class="botonPerfil">Perfil</button>
+                <button id="btnAjustes" class="botonPerfil">Ajustes</button>
+                <button id="btnCerrar" class="botonPerfil" >Cerrar sesión</button>
+            </div>
+            
+            <!-- Apartado de Perfil  -->
+            <div class="infoPerfil" id="infoPerfil">
+                <p><strong>Nombre</strong><br><%= nombre || 'No disponible' %></p>
+                <p><strong>Email</strong><br><%= email || 'No disponible' %></p>
+
+                <button id="btnEliminar" class="botonPerfil"">Eliminar Cuenta</button>
+            </div>
+
+            <!-- Apartado de Ajustes -->
+            <div class="actuInfo" id="actuInfo">
+                <form action="/actualizarPerfil?_method=PATCH" method="POST" id="updateForm">
+                    <input type="hidden" name="_method" value="PATCH"> <!-- Simula el método PATCH -->
+                    
+                    <label for="newName">Nuevo Nombre:</label>
+                    <input type="text" id="newName" name="newName" value="<%= nombre %>" required>
+
+                    <label for="newEmail">Nueva Email:</label>
+                    <input type="email" id="newEmail" name="newEmail">
+            
+                    <label for="newPassword">Nueva Contraseña:</label>
+                    <input type="password" id="newPassword" name="newPassword">
+            
+                    <button type="submit" id="btnActu">Actualizar</button>
+                </form>
+            </div>
+        </div>
+
+        <footer>
+            <div class="redessociales">
+                <a href="https://www.facebook.com"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.tiktok.com"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.x.com"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.youtube.com"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <span class="copyright">© 2025 Rhymes Music. Todos los derechos reservados.</span>
+        </footer>
+    </div>
+
+    <script src="https://kit.fontawesome.com/9551891e69.js" crossorigin="anonymous"></script>
+    <script src="/app.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(typeof alert != "undefined"){ %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: '<%= showConfirmButton %>',
+                timer: '<%= timer %>'
+            }).then(()=>{
+                 window.location='/<%= ruta %>'
+            })
+        </script>
+    <% } %>
+</body>
+
+</html>

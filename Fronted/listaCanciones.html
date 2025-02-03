@@ -14,8 +14,29 @@
             <span class="nombre">Rhymes Music</span>
         </header>
 
-        <div class="contenedormedio">
+        <!--Barra lateral-->
+        <div id="barraLateral">
+            <div class="menu">
+                <a href="perfil" class="icono" id="iconoDistinto">
+                    <img src="perfil.png" alt="Perfil"/>    
+                </a>
+                <span class="globo">Perfil</span>
+            </div>
+            <div class="menu">
+                <a href="pagPrincipal.html" class="icono">
+                    <img src="home.png" alt="Home"/>    
+                </a>
+                <span class="globo">Home</span>
+            </div>
+            <div class="menu">
+                <a href="listaCanciones.html" class="icono">
+                    <img src="playlist.png" alt="Playlist"/>    
+                </a>
+                <span class="globo">Playlist</span>
+            </div>
+        </div> 
 
+        <div class="contenedormedio">
             <span id="addSongTxt">¡Añade una canción a la lista de reproducción!</span>
             <div id="addSong">
                 <input type="text" name="cancion" id="campotxt" placeholder="¿Qué canción deseas agregar a la lista?">
@@ -38,8 +59,8 @@
         </footer>
     </div>
     <script src="https://kit.fontawesome.com/9551891e69.js" crossorigin="anonymous"></script>
-    <script src="app.js"></script>
+    <script src="/app_canciones.js"></script>
+    <script src="/app.js"></script>
 </body>
-
 
 </html>
