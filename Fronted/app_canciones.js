@@ -113,38 +113,110 @@ function editarCancion(index) {
 
 //Para cuando se haga click en alguno de los botones que se encuentran el perfil.ejs
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Documento cargado');  //Verifica que este el documento cargado
-    
-    // Verifica si los botones existen
-    const btnPerfil = document.getElementById('btnPerfil');
-    const btnAjustes = document.getElementById('btnAjustes');
-    const btnCerrar = document.getElementById('btnCerrar');
-    const infoPerfil = document.getElementById('infoPerfil');
-    const actuInfo = document.getElementById('actuInfo');
+  console.log('Documento cargado');  //Verifica que este el documento cargado
   
-    console.log(btnPerfil, btnAjustes, btnCerrar, infoPerfil, actuInfo); //Verifica que esten
-    
-    //Marca en consola que no se encontraron
-    if (!btnPerfil || !btnAjustes || !btnCerrar || !infoPerfil || !actuInfo) {
-      console.error('Uno o más elementos no se encontraron en el DOM.');
-      return;
-    }
+  // Verifica si los botones existen
+  const btnPerfil = document.getElementById('btnPerfil');
+  const btnAjustes = document.getElementById('btnAjustes');
+  const btnCerrar = document.getElementById('btnCerrar');
+  const infoPerfil = document.getElementById('infoPerfil');
+  const actuInfo = document.getElementById('actuInfo');
+
+  console.log(btnPerfil, btnAjustes, btnCerrar, infoPerfil, actuInfo); //Verifica que esten
   
-    //Funcionalidad de botones, incluyendo un mensaje para que se muestre en la 
-    //consola que esten siendo usados
-    btnPerfil.addEventListener('click', () => {
-      console.log('Botón "Perfil" clickeado');
-      infoPerfil.style.display = 'block';
-      actuInfo.style.display = 'none';
-    });
-  
-    btnAjustes.addEventListener('click', () => {
-      console.log('Botón "Ajustes" clickeado');
-      actuInfo.style.display = 'block';
-      infoPerfil.style.display = 'none';
-    });
-  
-    btnCerrar.addEventListener('click', () => {
-      window.location.href = '/';
-    });
+  //Marca en consola que no se encontraron
+  if (!btnPerfil || !btnAjustes || !btnCerrar || !infoPerfil || !actuInfo) {
+    console.error('Uno o más elementos no se encontraron en el DOM.');
+    return;
+  }
+
+  //Funcionalidad de botones, incluyendo un mensaje para que se muestre en la 
+  //consola que esten siendo usados
+  btnPerfil.addEventListener('click', () => {
+    console.log('Botón "Perfil" clickeado');
+    infoPerfil.style.display = 'block';
+    actuInfo.style.display = 'none';
   });
+
+  btnAjustes.addEventListener('click', () => {
+    console.log('Botón "Ajustes" clickeado');
+    actuInfo.style.display = 'block';
+    infoPerfil.style.display = 'none';
+  });
+
+  btnCerrar.addEventListener('click', () => {
+    window.location.href = '/';
+  });
+});
+
+// Para cuando se elimine la cuenta del usuario
+document.getElementById("btnEliminar").addEventListener("click", function () {
+  console.log("Botón eliminar presionado"); // Verifica si llega aquí
+  if (confirm("¿Estás seguro de que quieres eliminar tu cuenta? Esta acción no se puede deshacer.")) {
+      fetch("/eliminarUsuario", {
+          method: "DELETE",
+          headers: {
+              "Content-Type": "application/json"
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+          alert(data.message); //Mensaje de éxito o error
+          if (data.success) {
+              window.location.href = ""; //Para dirigir a sesion
+          }
+      })
+      .catch(error => console.error("Error al eliminar la cuenta:", error));
+  }
+});
+
+// Para cuando se actualicen los datos
+document.getElementById("updateForm").addEventListener("submit", async (e) => {
+  e.preventDefault(); // Evita el envío por defecto del formulario
+
+  const newName = document.getElementById("newName").value;
+  const newPassword = document.getElementById("newPassword").value;
+  const newEmail = document.getElementById("newEmail").value;
+
+  const response = await fetch('/actualizarPerfil', {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ newName, newPassword, newEmail }),
+  });
+  const data = await response.json();
+
+  if (data.success) {
+    alert(data.message); // Mensaje de éxito
+    // Actualizados los datos de nombre y email
+    document.getElementById("username").textContent = data.nombre;
+    document.getElementById("userEmail").textContent = data.email;
+    // Para redirigir a perfil con los datos actualizados
+    window.location.href = 'perfil';
+  } else {
+    alert(data.message); //Mensaje de error
+  }
+});
+
+// Verificación de sesión y redirección en /perfil
+fetch('/perfil')
+.then(response => response.json())
+.then(data => {
+  if (data.nombre && data.email) {
+    document.getElementById("username").textContent = data.nombre;
+    document.getElementById("userEmail").textContent = data.email;
+  } else {
+    // Verifica si no hay sesión activa antes de redirigir
+    if (!localStorage.getItem('token')) {
+      window.location.href = "/"; // Redirige solo si no hay sesión
+    }
+  }
+})
+.catch(error => {
+  console.error("Error al obtener los datos:", error);
+  // Verifica si no hay sesión activa antes de redirigir
+  if (!localStorage.getItem('token')) {
+    window.location.href = "/"; // Redirige solo si no hay sesión
+  }
+});
