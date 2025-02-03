@@ -323,6 +323,65 @@ app.patch('/actualizarPerfil', async (req, res) => {
     });
 });
 
+//Eliminar los datos del usuario en la base de datos, DELETE
+app.delete('/eliminarUsuario', (req, res) => {
+    console.log("Solicitud DELETE recibida para eliminar usuario con ID:", req.session.userId);
+    const userId = req.session.userId;
+  
+    if (!userId) {
+      console.log("No hay usuario.");
+      return res.render('perfil', {
+        success: false,
+        alert: true,
+        alertTitle: "No hay usuario.",
+        alertIcon: "error",
+        showConfirmButton: false,
+        timer: 1000,
+        ruta: ''
+      });
+    }
+  
+    connection.query('DELETE FROM usuarios WHERE id = ?', [userId], (error, results) => {
+      if (error) {
+        console.log('Error al eliminar la cuenta:', error);
+        return res.render('sesion', {
+          success: false,
+          alert: true,
+          alertTitle: "Error al eliminar la cuenta.",
+          alertIcon: "error",
+          showConfirmButton: false,
+          timer: 1000,
+          ruta: 'perfil'
+        });
+      }
+  
+      req.session.destroy((err) => {
+        if (err) {
+          console.log('Error al cerrar sesión después de eliminar la cuenta:', err);
+          return res.render('sesion', {
+            success: false,
+            alert: true,
+            alertTitle: "Error al cerrar sesión.",
+            alertIcon: "error",
+            showConfirmButton: false,
+            timer: 1000,
+            ruta: 'perfil'
+          });
+        }
+  
+        return res.render('sesion', {
+          success: true,
+          alert: true,
+          alertTitle: "Eliminación exitosa",
+          alertIcon: "success",
+          showConfirmButton: false,
+          timer: 2000,
+          ruta: '/'
+        });
+      });
+    });
+});
+  
 
 app.listen(3000,()=>{
     console.log('Server funciona en http://localHost:3000')
