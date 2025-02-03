@@ -291,6 +291,93 @@ i:hover {
   margin: 15px;
 }
 
+/* Diseño de barra lateral*/
+#barraLateral {
+  width: 80px; 
+  height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  padding-left: 30px;
+  gap: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+/*Contenedor de cada icono*/
+.menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding-left: 10px;
+  padding-top: 45px;
+}
+
+/*Iconos en círculo*/
+.icono {
+  width: 60px;
+  height: 60px;
+  background-color: #141414;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#iconoDistinto{
+  background-color: #1C1C1C;
+  border: 2px solid #141414;
+}
+
+.icono img {
+  width: 60%;
+  height: auto;
+}
+
+.icono:hover {
+  background: rgba(255, 255, 255, 0.2);
+  animation: rotate360 1s linear infinite;
+}
+
+/*Globo de texto*/
+.globo {
+  position: absolute;
+  left: 100%;
+  background-color: #141414;
+  color: white;
+  padding: 10px 21px;
+  border-radius: 5px;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: bold;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+/* Para mostrar el globo al pasar el cursor */
+.menu:hover .globo {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(10px);
+}
+
+@keyframes rotate360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
 /* RESPONSIVE DESIGN */
 @media (max-width:610px) {
   body .contenedor header {
