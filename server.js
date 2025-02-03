@@ -83,7 +83,7 @@ app.get('/registrarse', (req, res) => {
   
 //CRUD
 //Crear nuevo usuario,  CREATED
-app.post('/registrarse', validacionRegistro, async(req, res)=>{
+app.post('/registrarse', async(req, res)=>{
     const usuario = req.body.usuario;
     const email = req.body.email;
     const pass = req.body.pass;

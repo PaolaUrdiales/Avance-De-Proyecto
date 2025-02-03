@@ -29,7 +29,7 @@ body .contenedor header {
   top: 0;
   left: 0;
   width: 100%;
-  height: 5%;
+  height: 12%;
   display: flex;
   flex-flow: column;
   flex-wrap: nowrap;
@@ -72,13 +72,8 @@ body .contenedor footer {
 /* DISEÑO DE LA PAGINA PRINCIPAL*/
 /* Diseño de descripcion*/
 .descripcion {
-  padding: 20px;
-  margin: 40px;
-  margin-left: 130px;
-  text-align: justify;
-  font-size: 15px;
-  background-color: #141414;
-  border: 2px solid white;
+  margin-left: 155px;
+  font-size: 20px;
 }
 
 /* Diseño de seccion de proyectos*/
