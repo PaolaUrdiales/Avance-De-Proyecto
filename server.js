@@ -15,6 +15,7 @@ const app = express(); //Iniciar app
 //Middleware
 app.use(express.json());
 app.use(cors());
+app.use(methodOverride('_method')); //Method-override para sobrescribir el método HTTP
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'fronted')));
 app.use('/js', express.static(path.join(__dirname, 'fronted', 'js')));
