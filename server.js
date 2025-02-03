@@ -42,6 +42,14 @@ connection.connect((err) => {
     console.log('Conexión exitosa a la base de datos.');
 });
 
+//Configuración de la sesión
+app.use(expressSession({
+    secret: 'claveSecreta', 
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } 
+}));
+
 app.use(cors({
     origin: '*',
     methods: ['GET','POST','PATCH','DELETE'],
@@ -379,6 +387,16 @@ app.delete('/eliminarUsuario', (req, res) => {
           ruta: '/'
         });
       });
+    });
+});
+  
+//Cerrar sesion de usuario
+app.post('/perfil', (req, res) => {
+    req.session.destroy((err) => {
+      if (err) {
+        return res.json({ success: false, message: 'Error al cerrar sesión.' });
+      }
+      res.json({ success: true });
     });
 });
   
