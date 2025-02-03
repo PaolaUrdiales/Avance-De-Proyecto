@@ -13,3 +13,5 @@ Link del Figma a la pagina de Perfil: https://www.figma.com/design/oajHWs7lAd6Ec
 
 
 Link de los requerimientos: https://utmedu-my.sharepoint.com/:x:/g/personal/al03107338_tecmilenio_mx/Ed-8eeISaHRNmTeGvLxjpqEB6R9wHF6o_lDTWIVrSB2xGw?e=p5uPVa
+
+Link de la matriz de requerimientos para testear la página: https://utmedu-my.sharepoint.com/:x:/r/personal/al03103352_tecmilenio_mx/_layouts/15/Doc.aspx?sourcedoc=%7B3B09122A-FF3F-44AE-98A5-BCD795381791%7D&file=QA-MatrizDeRequerimientos.xlsx&action=default&mobileredirect=true
