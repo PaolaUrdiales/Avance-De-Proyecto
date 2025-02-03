@@ -555,7 +555,147 @@ i:hover {
   box-shadow: 0 0 0 3px rgba(230, 230, 230, .9);
 }
 
+/* Diseño de perfil */
+.perfilCuadro {
+  display: flex;
+  background: #222;
+  padding: 25px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 10px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 60%;
+}
 
+.perfilLateral {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+}
+
+.perfilBtn {
+  width: 95px;
+  height: 95px;
+  background: gray;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.botonPerfil {
+  background: #141414;
+  color: #ffff;
+  border: none;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 30px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.btnPerfil:hover {
+  background: #bbb;
+}
+
+/*Diseño del apartado para mostrar datos*/
+.infoPerfil {
+  background: #141414;
+  padding: 20px;
+  border-radius: 10px;
+  width: 50%;
+  text-align: left;
+}
+
+.infoPerfil p {
+  margin: 25px 0;
+}
+
+/*Diseño del apartado para editar datos*/
+.actuInfo {
+  background: #141414;
+  padding: 20px;
+  border-radius: 10px;
+  width: 50%;
+  text-align: left;
+  display: none;
+}
+
+.actuInfo input, .actuInfo button {
+  margin: 10px 0;
+}
+
+.actuInfo input {
+  width: 92%;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  background: #888;
+  color: white;
+  font-size: 14px;
+}
+
+.actuPerfil input:focus {
+  border-color: #555353;
+}
+
+#btnActu {
+  background-color: #3bb054;
+  padding: 12px 20px;
+  border-radius: 50px;
+  margin-bottom: 1px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+#btnActu:hover {
+  background-color: #2f7f40;
+}
+
+#actuInfo {
+  display: none; /*Para ocultar*/
+}
+
+#infoPerfil {
+  display: block; /*Para mostrar*/
+}
+
+/*Diseño del boton para cerrar sesion*/
+#btnCerrar {
+  background: #dc3545;
+  color: white;
+  padding: 12px;
+  border-radius: 5px;
+  margin-top: 20px;
+  width: 100%;
+  cursor: pointer;
+}
+
+#btnCerrar:hover {
+  background: #bc1b2b;
+}
+
+/*Diseño del boton para elimianr usuario*/
+#btnEliminar {
+  display: block;
+  margin: 50px auto 0 auto;
+  background: #e22f41;
+  color: white;
+  padding: 10px;
+  border-radius: 35px;
+  margin-top: 50px;
+  width: 60%;
+  cursor: pointer;
+}
+
+#btnEliminar:hover {
+  background: #bc2131;
+}
 
 
 /* RESPONSIVE DESIGN */
