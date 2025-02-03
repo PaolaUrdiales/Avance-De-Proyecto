@@ -199,9 +199,9 @@ app.get('/perfil', (req, res) => {
         });
       }
     });
-  });
+});
   
-  app.get('/perfil', (req, res) => {
+app.get('/perfil', (req, res) => {
     if (req.session.loggedin) {
       res.render('perfil', { 
         nombre: req.session.nombre, 
@@ -211,8 +211,118 @@ app.get('/perfil', (req, res) => {
     } else {
       res.redirect('');
     }
-  });
+});
   
+//Actualización del perfil del usuario, UPDATE
+app.patch('/actualizarPerfil', async (req, res) => {
+    const { newName, newPassword, newEmail } = req.body;
+    const userId = req.session.userId; //ID del usuario desde la sesión
+  
+    //Verificar si se dio un nombre
+    if (!newName) {
+      return res.render('perfil', {
+        nombre: req.session.nombre || '',
+        email: req.session.email || '',
+        success: false,
+        alert: true,
+        alertTitle: "El nuevo nombre es obligatorio.",
+        alertIcon: "error",
+        showConfirmButton: false,
+        timer: 1000,
+        ruta: 'perfil'
+      });
+    }
+    let updateValues = [newName];
+  
+    //Verificar si se dio un nuevo correo y tiene @ junto al .
+    if (newEmail) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(newEmail)) {
+        return res.render('perfil', {
+          nombre: req.session.nombre || '',
+          email: req.session.email || '',
+          success: false,
+          alert: true,
+          alertTitle: "Correo electrónico inválido.",
+          alertIcon: "error",
+          showConfirmButton: false,
+          timer: 1000,
+          ruta: 'perfil'
+        });
+      }
+      updateValues.push(newEmail);
+    }
+  
+    //Verificar y encriptar la contraseña nueva si se ingresa una
+    let passwordHash = null;
+    if (newPassword) {
+      passwordHash = await bcryptjs.hash(newPassword, 8);
+      updateValues.push(passwordHash);
+    }
+    //Actualizar los datos en la base de datos
+    let updateQuery = 'UPDATE usuarios SET nombre = ?';
+    if (newEmail) {
+      updateQuery += ', correo = ?';
+    }
+    if (passwordHash) {
+      updateQuery += ', password = ?';
+    }
+    updateQuery += ' WHERE id = ?';
+    updateValues.push(userId);
+  
+    //Comprobar la actualización
+    connection.query(updateQuery, updateValues, (error, results) => {
+      if (error) {
+        console.log("Error en la actualización:", error);
+        return res.render('perfil', {
+          nombre: req.session.nombre || '',
+          email: req.session.email || '',
+          success: false,
+          alert: true,
+          alertTitle: "Error al actualizar los datos.",
+          alertIcon: "error",
+          showConfirmButton: false,
+          timer: 1000,
+          ruta: 'perfil'
+        });
+      }
+      //Datos nuevos del usuario
+      connection.query('SELECT nombre, correo FROM usuarios WHERE id = ?', [userId], (error, results) => {
+        if (error) {
+          console.log("Error al obtener los datos actualizados:", error);
+          return res.render('perfil', {
+            nombre: req.session.nombre || '',
+            email: req.session.email || '',
+            success: false,
+            alert: true,
+            alertTitle: "Error al obtener los datos actualizados.",
+            alertIcon: "error",
+            showConfirmButton: false,
+            timer: 1000,
+            ruta: 'perfil'
+          });
+        }
+        const updatedUser = results[0];
+        console.log('Datos actualizados:', updatedUser);
+  
+        //Los datos con los nuevos valores
+        req.session.nombre = updatedUser.nombre;
+        req.session.email = updatedUser.correo;
+        //Mensaje donde se confirma la actualización
+        return res.render('perfil', {
+          nombre: updatedUser.nombre,
+          email: updatedUser.correo,
+          alert: true,
+          alertTitle: "Actualización exitosa",
+          alertIcon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+          ruta: 'perfil'
+        });
+      });
+    });
+});
+
 
 app.listen(3000,()=>{
     console.log('Server funciona en http://localHost:3000')
