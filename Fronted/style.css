@@ -177,8 +177,8 @@ body .contenedor footer {
 }
 
 
-
-/*estilos pa el contenedor medio */
+/* DISEÑO DE PAGINA DE LISTA DE CANCIONES*/
+/* Estilos para el contenedor medio */
 body .contenedor .contenedormedio {
   width: 70%;
   display: flex;
@@ -187,7 +187,7 @@ body .contenedor .contenedormedio {
   align-items: center;
 }
 
-/*para el texto que dice q aÃ±ada una canciÃ³n*/
+/*Para el texto que dice que añada una canción*/
 body .contenedor .contenedormedio #addSongTxt {
   color: white;
   padding: 0px;
@@ -215,7 +215,7 @@ body .contenedor .contenedormedio input::placeholder {
   color: black
 }
 
-/*historial*/
+/* Historial de canciones*/
 body .contenedor .contenedormedio #historial {
   color: white;
   background-color: gray;
@@ -228,8 +228,7 @@ body .contenedor .contenedormedio #historial {
 
 }
 
-
-/*para el boton de agregar */
+/*Para el boton de agregar */
 body .contenedor .contenedormedio #addSong {
   display: flex;
   flex-flow: row;
@@ -266,7 +265,7 @@ body .contenedor .contenedormedio #listaReproduccion article b {
   font-weight: 500;
 }
 
-/*comandos mas especÃ­ficos del botÃ³n +*/
+/* Comandos mas especificos del boton +*/
 i {
   font-size: 40px;
   margin-left: 10px;
