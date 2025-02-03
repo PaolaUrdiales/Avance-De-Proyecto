@@ -69,6 +69,115 @@ body .contenedor footer {
   bottom: -15px;
 }
 
+/* DISEÑO DE LA PAGINA PRINCIPAL*/
+/* Diseño de descripcion*/
+.descripcion {
+  padding: 20px;
+  margin: 40px;
+  margin-left: 130px;
+  text-align: justify;
+  font-size: 15px;
+  background-color: #141414;
+  border: 2px solid white;
+}
+
+/* Diseño de seccion de proyectos*/
+.proyectos {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 85px;
+}
+
+.proyectos span {
+  margin: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.proyecto {
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 2px solid white;
+  background-color: #141414;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.proyecto span {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.proyecto p {
+  text-align: justify;
+  font-size: 13px;
+}
+
+.proyecto img {
+  width: 40%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+/* Diseño de seccion de artistas*/
+.artistas {
+  margin-top: 10px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 85px;
+}
+
+.artistas span {
+  margin: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.artista {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #141414;
+  border: 2px solid white;
+  margin-bottom: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+.artista:hover {
+  background-color: white;
+  border: 2px solid #1c1c1c;
+}
+
+.artista:hover .dataArtista span,
+.artista:hover .dataArtista p {
+  color: black;
+}
+
+.dataArtista {
+  margin: 10px 0;
+}
+
+.dataArtista span {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.dataArtista p {
+  text-align: justify;
+  font-size: 13px;
+}
+
+
+
 /*estilos pa el contenedor medio */
 body .contenedor .contenedormedio {
   width: 70%;
@@ -89,7 +198,6 @@ body .contenedor .contenedormedio #addSongTxt {
   margin-bottom: 15px;
   background-color: transparent;
 }
-
 
 body .contenedor .contenedormedio input {
   padding: 12px;
