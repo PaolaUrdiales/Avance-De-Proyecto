@@ -110,7 +110,109 @@ app.post('/registrarse', validacionRegistro, async(req, res)=>{
     })
 });
   
+//Inicio de sesión de usuario, donde recibimos información del usuario 
+app.post('/sesion', async (req, res) => {
+    const usuario = req.body.usuario;
+    const pass = req.body.pass;
+  
+    if (usuario && pass) {
+      connection.query('SELECT * FROM usuarios WHERE nombre = ?', [usuario], async (error, results) => {
+        if (error) {
+          console.log(error);
+          return res.render('sesion', {
+            alert: true,
+            alertTitle: "Error",
+            alertMessage: "Error en la base de datos. Intenta nuevamente.",
+            alertIcon: "error",
+            showConfirmButton: true,
+            timer: null,
+            ruta: ''
+          });
+        }
+  
+        if (results.length == 0 || !(await bcryptjs.compare(pass, results[0].password))) {
+          return res.render('sesion', {
+            alert: true,
+            alertTitle: "Error de autenticación",
+            alertMessage: "Usuario y/o contraseña incorrectos.",
+            alertIcon: "error",
+            showConfirmButton: true,
+            timer: null,
+            ruta: ''
+          });
+        } else {
+          //Datos del usuario
+          req.session.loggedin = true;
+          req.session.userId = results[0].id;
+          req.session.nombre = results[0].nombre;
+          req.session.email = results[0].correo;
+  
+          //Mensaje de que se logro la sesión
+          return res.render('sesion', {
+            alert: true,
+            alertTitle: "Inicio de sesión exitoso",
+            alertMessage: "¡Bienvenido de nuevo!",
+            alertIcon: "success",
+            showConfirmButton: false,
+            timer: 1500,
+            ruta: 'perfil' //Manda a perfil
+          });
+        }
+      });
+    } else {
+      return res.render('sesion', {
+        alert: true,
+        alertTitle: "Campos vacíos",
+        alertMessage: "Por favor ingrese usuario y contraseña.",
+        alertIcon: "warning",
+        showConfirmButton: true,
+        timer: null,
+        ruta: ''
+      });
+    }
+});
 
+//Lee la informacion del usuario de la base de datos para poder mostrar basado 
+//en donde recibimos la información, READ
+app.get('/perfil', (req, res) => {
+    const userId = req.session.userId;
+    //Verificar si el usuario en la sesión
+    if (!userId) {
+      return res.redirect('/');
+    }
+    //Consultamos la base de datos si esta en sesión
+    connection.query('SELECT nombre, correo FROM usuarios WHERE id = ?', [userId], (error, results) => {
+      if (error || results.length === 0) {
+        //En caso que ya haya sido eliminado.
+        req.session.destroy((err) => {
+          if (err) {
+            console.log('Error al cerrar sesión después de eliminar la cuenta:', err);
+          }
+          return res.redirect('/');
+        });
+      } else {
+        //Si hay usuario se debe mostrar el perfil
+        const user = results[0];
+        res.render('perfil', {
+          nombre: user.nombre,
+          email: user.correo
+        });
+      }
+    });
+  });
+  
+  app.get('/perfil', (req, res) => {
+    if (req.session.loggedin) {
+      res.render('perfil', { 
+        nombre: req.session.nombre, 
+        email: req.session.correo 
+      });
+  
+    } else {
+      res.redirect('');
+    }
+  });
+  
 
 app.listen(3000,()=>{
     console.log('Server funciona en http://localHost:3000')
